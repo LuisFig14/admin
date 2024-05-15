@@ -1,4 +1,7 @@
 package com.project.admin.repository.client;
 
-public interface ClientRepository {
+import com.project.admin.domain.client.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client , Long> {
 }

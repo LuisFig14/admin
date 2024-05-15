@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "Client")
 @Table(name = "clients")
-@EqualsAndHashCode(of = "id")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Client {
 
     @Id
@@ -19,6 +19,15 @@ public class Client {
     private Long id;
     private String name;
     private String email;
-    private Integer phoneNumber;
+    private String address;
+    private Integer phone;
+
+    public Client (DataClient dataClient){
+        this.name = dataClient.name();
+        this.email= dataClient.email();
+        this.address= dataClient.address();
+        this.phone= dataClient.phone();
+    }
+
 
 }
