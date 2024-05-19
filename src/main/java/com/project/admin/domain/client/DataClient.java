@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record DataClient(
 
+        Long id,
         @NotBlank
         String name,
         @NotBlank
@@ -14,5 +15,16 @@ public record DataClient(
         @NotNull
         String address,
         @NotNull
-        Integer phone) {
+        String phone) {
+
+        public DataClient(Client client){
+
+                this(client.getId(),
+                        client.getName(),
+                        client.getEmail(),
+                        client.getAddress(),
+                        client.getPhone());
+        }
+
+
 }

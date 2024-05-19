@@ -20,7 +20,7 @@ public class Client {
     private String name;
     private String email;
     private String address;
-    private Integer phone;
+    private String phone;
 
     public Client (DataClient dataClient){
         this.name = dataClient.name();

@@ -1,10 +1,11 @@
 package com.project.admin.controller.client;
 
-import com.project.admin.domain.client.Client;
 import com.project.admin.domain.client.DataClient;
-import com.project.admin.repository.client.ClientRepository;
-import jakarta.validation.Valid;
+import com.project.admin.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,17 +15,20 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
 
-    @GetMapping
-    public List<Client> getAll() {
-        return clientRepository.findAll();
+    @GetMapping("/list")
+    public ResponseEntity<List<DataClient>> getClientsByList() {
+        return ResponseEntity.ok(clientService.getClientsByList());
     }
 
-    @PostMapping
-    public void saveClient(@RequestBody @Valid DataClient dataClient){
-        clientRepository.save(new Client(dataClient));
+    //Get by page
+    @GetMapping("/page")
+    public ResponseEntity<Page<DataClient>> getClientsByPage(Pageable pageable){
+        return ResponseEntity.ok(clientService.getClientsByPage(pageable));
     }
+
+
 
 
 
