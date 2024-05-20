@@ -1,5 +1,6 @@
 package com.project.admin.service.client;
 
+import com.project.admin.domain.client.Client;
 import com.project.admin.domain.client.DataClient;
 import com.project.admin.repository.client.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -24,5 +25,18 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Page<DataClient> getClientsByPage(Pageable pageable) {
         return clientRepository.findAll(pageable).map(DataClient::new);
+    }
+
+    @Override
+    public DataClient getClientById(Long id) {
+
+        Optional<Client> client = clientRepository.findById(id);
+
+        if(client.isPresent()){
+            return new DataClient(client.get());
+        }else{
+            throw new RuntimeException("Client not found " + id);
+        }
+
     }
 }

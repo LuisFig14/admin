@@ -28,6 +28,11 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getClientsByPage(pageable));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DataClient> getClientById(@PathVariable Long id){
+        return ResponseEntity.ok(clientService.getClientById(id));
+    }
+
 
 
 
