@@ -4,20 +4,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record DataClient(
+public record ListDataClient( Long id, String name, String email, String address, String phone) {
 
-        Long id,
-        @NotBlank
-        String name,
-        @NotBlank
-        @Email
-        String email,
-        @NotNull
-        String address,
-        @NotNull
-        String phone) {
-
-        public DataClient(Client client){
+        public ListDataClient(Client client){
 
                 this(client.getId(),
                         client.getName(),
