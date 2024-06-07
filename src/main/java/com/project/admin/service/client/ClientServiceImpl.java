@@ -30,12 +30,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ListDataClient getClientById(Long id) {
+    public Client getClientById(Long id) {
 
         Optional<Client> client = clientRepository.findById(id);
 
         if(client.isPresent()){
-            return new ListDataClient(client.get());
+            return client.get();
         }else{
             throw new RuntimeException("Client not found " + id);
         }
@@ -63,5 +63,15 @@ public class ClientServiceImpl implements ClientService {
         return client;
 
     }
+
+    @Override
+    public void deleteClient(Long id) {
+
+        Client client = getClientById(id);
+
+        clientRepository.delete(client);
+
+    }
+
 
 }

@@ -15,10 +15,12 @@ public interface ClientService {
 
     public Page<ListDataClient> getClientsByPage(Pageable pageable);
 
-    public ListDataClient getClientById (Long id);
+    public Client getClientById (Long id);
 
     public Client registerClient (RegistrationDataClient registrationDataClient);
 
     public Client updateClient (UpdateDataClient updateDataClient);
+
+    public void deleteClient(Long id);
 
 }

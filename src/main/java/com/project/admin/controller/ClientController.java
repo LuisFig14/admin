@@ -1,4 +1,4 @@
-package com.project.admin.controller.client;
+package com.project.admin.controller;
 
 import com.project.admin.domain.client.Client;
 import com.project.admin.domain.client.ListDataClient;
@@ -35,7 +35,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ListDataClient> getClientById(@PathVariable Long id){
+    public ResponseEntity<Client> getClientById(@PathVariable Long id){
         return ResponseEntity.ok(clientService.getClientById(id));
     }
 
@@ -57,6 +57,15 @@ public class ClientController {
         return ResponseEntity.ok(new UpdateDataClient(client.getId(), client.getName(), client.getEmail(), client.getAddress(), client.getPhone()));
     }
 
+    @DeleteMapping("/{id}") //Hacer prueba en insomnia
+    @Transactional
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id){
+
+        clientService.deleteClient(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
 
 
 
