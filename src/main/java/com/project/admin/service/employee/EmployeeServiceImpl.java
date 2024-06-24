@@ -1,15 +1,15 @@
 package com.project.admin.service.employee;
 
 
-import com.project.admin.domain.employee.Employee;
-import com.project.admin.domain.employee.ListDataEmployee;
-import com.project.admin.domain.employee.ListEmployee;
-import com.project.admin.domain.employee.RegistrationDataEmployee;
+import com.project.admin.domain.employee.*;
 import com.project.admin.repository.employee.EmployeeRepository;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
@@ -38,6 +38,33 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Page<ListEmployee> listEmployeesClass(Pageable pageable) {
         return employeeRepository.findAll(pageable).map(ListEmployee::new);
+    }
+
+    @Override
+    public Employee getEmployeeById(Long id) {
+
+        Optional<Employee> employee = employeeRepository.findById(id);
+
+        if (employee.isPresent()){
+            return employee.get();
+        }else {
+            throw new RuntimeException("Employee not found " + id);
+        }
+
+    }
+
+    @Override
+    public Employee updateEmployee(UpdateDataEmployee updateDataEmployee) {
+
+        Employee employee = employeeRepository.getReferenceById(updateDataEmployee.getId());
+        employee.updateEmployee(updateDataEmployee);
+        return employee;
+    }
+
+    @Override
+    public void deleteEmployee(Long id) {
+        Employee employee = getEmployeeById(id);
+        employeeRepository.delete(employee);
     }
 
 

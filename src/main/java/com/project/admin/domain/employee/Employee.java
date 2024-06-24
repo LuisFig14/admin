@@ -23,6 +23,24 @@ public class Employee {
     private String address;
     private String phone;
 
+    public void updateEmployee(UpdateDataEmployee updateDataEmployee ){
+
+        if (updateDataEmployee.name !=null  ){
+            this.name = updateDataEmployee.name;
+        }
+        if (updateDataEmployee.email !=null){
+            this.email = updateDataEmployee.email;
+        }
+        if (updateDataEmployee.address !=null){
+            this.address = updateDataEmployee.address;
+        }
+        if (updateDataEmployee.phone !=null){
+            this.phone = updateDataEmployee.phone;
+        }
+
+
+    }
+
 
 
 }

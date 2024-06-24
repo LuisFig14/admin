@@ -50,14 +50,14 @@ public class ClientController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<?> updateClient(@Valid @RequestBody UpdateDataClient updateDataClient){ //Pending
+    public ResponseEntity<?> updateClient(@Valid @RequestBody UpdateDataClient updateDataClient){
 
         Client client = clientService.updateClient(updateDataClient);
 
         return ResponseEntity.ok(new UpdateDataClient(client.getId(), client.getName(), client.getEmail(), client.getAddress(), client.getPhone()));
     }
 
-    @DeleteMapping("/{id}") //Hacer prueba en insomnia
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Void> deleteClient(@PathVariable Long id){
 
