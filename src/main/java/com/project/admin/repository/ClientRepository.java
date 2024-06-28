@@ -1,4 +1,4 @@
-package com.project.admin.repository.client;
+package com.project.admin.repository;
 
 import com.project.admin.domain.client.Client;
 import org.springframework.data.jpa.repository.JpaRepository;

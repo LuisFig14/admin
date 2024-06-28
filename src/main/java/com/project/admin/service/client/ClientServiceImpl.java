@@ -4,7 +4,7 @@ import com.project.admin.domain.client.Client;
 import com.project.admin.domain.client.ListDataClient;
 import com.project.admin.domain.client.RegistrationDataClient;
 import com.project.admin.domain.client.UpdateDataClient;
-import com.project.admin.repository.client.ClientRepository;
+import com.project.admin.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
