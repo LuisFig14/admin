@@ -1,12 +1,12 @@
 CREATE TABLE equipments(
 
-    idEquipment BIGINT NOT NULL AUTO_INCREMENT,
+    id_equipment BIGINT NOT NULL AUTO_INCREMENT,
     description VARCHAR(100) NOT NULL,
     brand VARCHAR(50) NOT NULL,
     model VARCHAR(50) NOT NULL,
-    serialNumber VARCHAR(50) NOT NULL,
+    serial_number VARCHAR(50) NOT NULL,
     location VARCHAR(50) NOT NULL,
 
-    PRIMARY KEY (idEquipment)
+    PRIMARY KEY(id_equipment)
 
 )

@@ -16,10 +16,12 @@ public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_equipment")
     private Long idEquipment;
     private String description;
     private String brand;
     private String model;
+    @Column(name = "serial_number")
     private String serialNumber;
     private String location;
 

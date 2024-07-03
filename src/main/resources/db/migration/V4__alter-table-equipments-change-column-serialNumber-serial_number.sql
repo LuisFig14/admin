@@ -1,1 +1,0 @@
-ALTER TABLE equipments CHANGE COLUMN serialNumber serial_number VARCHAR(50);
