@@ -3,6 +3,7 @@ package com.project.admin.controller;
 import com.project.admin.domain.equipment.Equipment;
 import com.project.admin.domain.equipment.ListDataEquipment;
 import com.project.admin.domain.equipment.RegistrationDataEquipment;
+import com.project.admin.domain.equipment.UpdateDataEquipment;
 import com.project.admin.service.equipment.EquipmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,23 @@ public class EquipmentController {
 
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Equipment> updateEquipment(@Valid @PathVariable Long id, UpdateDataEquipment updateDataEquipment){
+
+        Equipment equipment = equipmentService.updateEquipment(id, updateDataEquipment);
+
+        return ResponseEntity.ok(equipment);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEquipment (@PathVariable Long id){
+
+        equipmentService.deleteEquipment(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
 
 
 }
