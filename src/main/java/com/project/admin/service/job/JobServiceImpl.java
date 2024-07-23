@@ -65,4 +65,11 @@ public class JobServiceImpl implements JobService{
         }
 
     }
+    @Override
+    public void deleteJob(Long id) {
+
+        Job job = getJobById(id);
+
+        jobRepository.delete(job);
+    }
 }

@@ -46,7 +46,7 @@ public class EquipmentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Equipment> updateEquipment(@Valid @PathVariable Long id, UpdateDataEquipment updateDataEquipment){
+    public ResponseEntity<Equipment> updateEquipment(@Valid @PathVariable Long id, @RequestBody UpdateDataEquipment updateDataEquipment){
 
         Equipment equipment = equipmentService.updateEquipment(id, updateDataEquipment);
 
